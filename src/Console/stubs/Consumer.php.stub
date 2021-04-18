@@ -1,0 +1,12 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Idunis\EventSauce\Consumers\Consumer;
+
+final class {{ consumer }} extends Consumer
+{
+    // ...
+}

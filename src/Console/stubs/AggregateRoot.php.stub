@@ -1,0 +1,12 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use EventSauce\EventSourcing\AggregateRoot as EventSauceAggregateRoot;
+use Idunis\EventSauce\AggregateRoots\AggregateRoot;
+
+final class {{ aggregateRoot }} extends AggregateRoot implements EventSauceAggregateRoot
+{
+}
