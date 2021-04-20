@@ -5,23 +5,32 @@ declare(strict_types=1);
 namespace {{ namespace }};
 
 use Idunis\EventSauce\AggregateRoots\AggregateRootRepository;
+use Idunis\EventSauce\MessageRepository\StoredMessageRepository;
+use Idunis\EventSauce\MessageRepository\StoredSnapshotRepository;
 
 /** @method \{{ namespace }}\{{ aggregateRoot }} retrieve(\{{ namespace }}\{{ aggregateRoot }}Id $aggregateRootId) */
 final class {{ aggregateRoot }}Repository extends AggregateRootRepository
 {
-    /** @var string */
-    protected $aggregateRoot = {{ aggregateRoot }}::class;
 
     /** @var string */
-    protected $table = '{{ table }}';
+    protected string $aggregateRoot = {{ aggregateRoot }}::class;
+
+    /** @var string */
+    protected string $table = '{{ table }}';
+
+    protected string $snapshot_table = '{{ snapshot_table }}';
+    
+    /** @var string */
+    protected string $messageRepository = StoredMessageRepository::class;
+    
+    /** @var string */
+    protected string $snapshotRepository = StoredSnapshotRepository::class;
 
     /** @var array */
-    protected $consumers = [
+    protected array $consumers = [
 
     ];
 
-    /** @var array */
-    protected $decorators = [
-
-    ];
+    /** @var string */
+    protected string $queue = '';
 }

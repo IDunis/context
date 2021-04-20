@@ -7,17 +7,20 @@ namespace Idunis\EventSauce\AggregateRoots;
 use EventSauce\EventSourcing\AggregateRoot;
 use EventSauce\EventSourcing\AggregateRootId;
 use EventSauce\EventSourcing\ConstructingAggregateRootRepository;
-use EventSauce\EventSourcing\MessageDispatcher;
+// use EventSauce\EventSourcing\MessageDispatcher;
 use EventSauce\EventSourcing\MessageDispatcherChain;
 use EventSauce\EventSourcing\MessageRepository;
 use EventSauce\EventSourcing\Snapshotting\SnapshotRepository;
-use EventSauce\EventSourcing\Snapshotting\AggregateRootRepositoryWithSnapshotting as EventSauceAggregateRootRepository;
+use EventSauce\EventSourcing\Snapshotting\AggregateRootRepositoryWithSnapshotting;
 use EventSauce\EventSourcing\Snapshotting\AggregateRootWithSnapshotting;
+use EventSauce\EventSourcing\Snapshotting\ConstructingAggregateRootRepositoryWithSnapshotting;
+use Idunis\EventSauce\Message\EventMessageDispatcher;
+use Idunis\EventSauce\Message\MessageDispatcher;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
 use LogicException;
 
-abstract class AggregateRootRepository implements EventSauceAggregateRootRepository
+abstract class AggregateRootRepository implements AggregateRootRepositoryWithSnapshotting
 {
     protected string $aggregateRoot = '';
 

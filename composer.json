@@ -24,6 +24,8 @@
     "require": {
         "php": "^8.0|^7.4",
         "ext-json": "*",
+        "cviebrock/laravel-elasticsearch": "^8.0",
+        "elasticsearch/elasticsearch": "^7.12",
         "eventsauce/eventsauce": "^0.8.2",
         "illuminate/bus": "^8.0",
         "illuminate/container": "^8.0",

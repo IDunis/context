@@ -6,6 +6,7 @@ namespace Idunis\EventSauce\Message;
 
 use EventSauce\EventSourcing\Message;
 use EventSauce\EventSourcing\MessageDispatcher as EventSauceMessageDispatcher;
+use Idunis\EventSauce\Consumers\HandleConsumer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 final class MessageDispatcher implements EventSauceMessageDispatcher

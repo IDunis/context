@@ -17,10 +17,19 @@ class {{ migration }} extends Migration
             $table->dateTime('recorded_at', 6)->index();
             $table->jsonb('payload');
         });
+
+        Schema::create('{{ snapshot_table }}', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('aggregate_root_id', 36)->index();
+            $table->integer('aggregate_root_version', false, true);
+            $table->jsonb('state');
+            $table->dateTime('recorded_at', 6)->index();
+        });
     }
 
     public function down()
     {
+        Schema::dropIfExists('{{ snapshot_table }}');
         Schema::dropIfExists('{{ table }}');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Idunis\EventSauce\Support\Concerns;
+namespace Idunis\EventSauce\ORM\Eloquent;
 
 use Idunis\EventSauce\AggregateRoots\AggregateRootId;
 use Illuminate\Database\Eloquent\Model;
@@ -19,17 +19,9 @@ trait UuidModel
      */
     public static function bootUuidModel()
     {
-        static::creating(function ($model) {
-            // Don't let people provide their own UUIDs, we will generate a proper one.
-            $model->uuid = AggregateRootId::create();
-        });
-    
-        static::saving(function ($model) {
-            // What's that, trying to change the UUID huh?  Nope, not gonna happen.
-            $original_uuid = $model->getOriginal('uuid');
-    
-            if ($original_uuid !== $model->uuid) {
-                $model->uuid = $original_uuid;
+        static::creating(function (Model $model): void {
+            if (is_null($model->uuid)) {
+                $model->uuid = AggregateRootId::create()->toString();
             }
         });
     }
@@ -83,5 +75,10 @@ trait UuidModel
         });
     
         return $first ? $search->firstOrFail() : $search;
+    }
+
+    public static function find($uuid): ?Model
+    {
+        return static::where('id', $uuid)->orWhere('uuid', $uuid)->first();
     }
 }

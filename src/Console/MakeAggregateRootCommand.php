@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use Idunis\EventSauce\Exceptions\MakeFileFailed;
 use Illuminate\Support\Str;
 
-final class MakeAggregateCommand extends MakeCommand
+final class MakeAggregateRootCommand extends MakeCommand
 {
     protected $signature = 'make:aggregate-root {namespace} {--migration}';
 
@@ -43,12 +43,13 @@ final class MakeAggregateCommand extends MakeCommand
             'aggregateRoot' => $aggregateRoot = class_basename($aggregateRootClass),
             'namespace' => substr($aggregateRootClass, 0, strrpos($aggregateRootClass, '\\')),
             'table' => $this->option('migration') ? Str::snake(class_basename($aggregateRootClass)).'_domain_messages' : config('eventsauce.table'),
+            'snapshot_table' => $this->option('migration') ? Str::snake(class_basename($aggregateRootClass)).'_snapshots' : config('eventsauce.snapshot_table'),
             'migration' => 'Create'.ucfirst(class_basename($aggregateRootClass)).'DomainMessagesTable',
         ];
 
         $this->makeFiles([
             'AggregateRoot' => $aggregateRootPath,
-            'AggregateRootId' => $aggregateRootIdPath,
+            // 'AggregateRootId' => $aggregateRootIdPath,
             'AggregateRootRepository' => $aggregateRootRepositoryPath,
         ], $replacements);
 

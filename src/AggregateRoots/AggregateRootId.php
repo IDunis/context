@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EIdunis\EventSauce\AggregateRoots;
+namespace Idunis\EventSauce\AggregateRoots;
 
 use EventSauce\EventSourcing\AggregateRootId as EventSauceAggregateRootId;
 use Ramsey\Uuid\Uuid;
