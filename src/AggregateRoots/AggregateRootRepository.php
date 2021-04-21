@@ -30,7 +30,7 @@ abstract class AggregateRootRepository implements AggregateRootRepositoryWithSna
 
     protected string $table = '';
 
-    protected string $snapshot_table = '';
+    protected string $snapshotTable = '';
 
     protected string $queue = '';
     
@@ -122,8 +122,8 @@ abstract class AggregateRootRepository implements AggregateRootRepositoryWithSna
     protected function getConnection(): ConnectionInterface
     {
         $connection = $this->connection
-            ?? config('eventsauce.connection')
-            ?? config('database.default');
+            ?: config('eventsauce.connection')
+            ?: config('database.default');
 
         return DB::connection($connection);
     }
@@ -134,11 +134,11 @@ abstract class AggregateRootRepository implements AggregateRootRepositoryWithSna
      */
     protected function getMessageRepository(): MessageRepository
     {
-        $messageRepository = $this->messageRepository ?? config('eventsauce.message_repository');
+        $messageRepository = $this->messageRepository ?: config('eventsauce.message_repository');
 
         return app()->make($messageRepository, [
             'connection'    =>  $this->getConnection(),
-            'table'         =>  $this->table ?? config('eventsauce.table'),
+            'table'         =>  $this->table ?: config('eventsauce.table'),
         ]);
     }
 
@@ -148,11 +148,11 @@ abstract class AggregateRootRepository implements AggregateRootRepositoryWithSna
      */
     protected function getSnapshotRepository(): SnapshotRepository
     {
-        $snapshotRepository = $this->snapshotRepository ?? config('eventsauce.snapshot_repository');
-
+        $snapshotRepository = $this->snapshotRepository ?: config('eventsauce.snapshot_repository');
+        
         return app()->make($snapshotRepository, [
             'connection'    =>  $this->getConnection(),
-            'table'         =>  $this->snapshotTable ?? config('eventsauce.snapshot_table'),
+            'table'         =>  $this->snapshotTable ?: config('eventsauce.snapshot_table'),
         ]);
     }
 }

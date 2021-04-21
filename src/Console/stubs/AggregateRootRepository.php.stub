@@ -18,7 +18,7 @@ final class {{ aggregateRoot }}Repository extends AggregateRootRepository
     /** @var string */
     protected string $table = '{{ table }}';
 
-    protected string $snapshot_table = '{{ snapshot_table }}';
+    protected string $snapshotTable = '{{ snapshot_table }}';
     
     /** @var string */
     protected string $messageRepository = StoredMessageRepository::class;
