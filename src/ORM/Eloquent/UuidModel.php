@@ -46,7 +46,7 @@ trait UuidModel
      */
     public function scopeUuid($query, $uuid, $first = true)
     {
-        if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
+        if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', (string)$uuid) !== 1)) {
             throw (new ModelNotFoundException)->setModel(get_class($this));
         }
     
@@ -72,7 +72,7 @@ trait UuidModel
             throw (new ModelNotFoundException)->setModel(get_class($this));
         }
     
-        if (preg_match('/^([0-9]+|[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/', $id_or_uuid) !== 1) {
+        if (preg_match('/^([0-9]+|[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/', (string)$id_or_uuid) !== 1) {
             throw (new ModelNotFoundException)->setModel(get_class($this));
         }
     
@@ -87,5 +87,14 @@ trait UuidModel
     public static function find($id_or_uuid): ?Model
     {
         return static::where('id', is_numeric($id_or_uuid) ? $id_or_uuid : null)->orWhere('uuid', $id_or_uuid)->first();
+    }
+
+    public static function findOrFail($id_or_uuid): ?Model
+    {
+        $entity = static::where('id', is_numeric($id_or_uuid) ? $id_or_uuid : null)->orWhere('uuid', $id_or_uuid)->first();
+        if (!$entity) {
+            throw (new ModelNotFoundException)->setModel(get_class($this));
+        }
+        return $entity;
     }
 }
