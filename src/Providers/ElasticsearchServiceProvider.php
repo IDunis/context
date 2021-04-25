@@ -41,7 +41,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
 
     protected function setUpConfig(): void
     {
-        $source = dirname(__DIR__) . '/../../config/elasticsearch.php';
+        $source = __DIR__ . '/../../config/elasticsearch.php';
 
         if ($this->app instanceof LaravelApplication) {
             $this->publishes([$source => config_path('elasticsearch.php')], 'config');
