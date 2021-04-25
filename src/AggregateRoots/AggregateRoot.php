@@ -1,6 +1,8 @@
 <?php
 
-namespace Idunis\EventSauce\AggregateRoots;
+declare(strict_types=1);
+
+namespace Idunis\Context\AggregateRoots;
 
 use EventSauce\EventSourcing\AggregateRoot as EventSauceAggregateRoot;
 use EventSauce\EventSourcing\AggregateRootId;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use Idunis\EventSauce\AggregateRoots\AggregateRootRepository;
-use Idunis\EventSauce\MessageRepository\StoredMessageRepository;
-use Idunis\EventSauce\MessageRepository\StoredSnapshotRepository;
+use Idunis\Context\AggregateRoots\AggregateRootRepository;
+use Idunis\Context\MessageRepository\StoredMessageRepository;
+use Idunis\Context\MessageRepository\StoredSnapshotRepository;
 
 /** @method \{{ namespace }}\{{ aggregateRoot }} retrieve(\{{ namespace }}\{{ aggregateRoot }}Id $aggregateRootId) */
 final class {{ aggregateRoot }}Repository extends AggregateRootRepository

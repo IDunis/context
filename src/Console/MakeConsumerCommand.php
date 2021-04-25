@@ -1,8 +1,10 @@
 <?php
 
-namespace Idunis\EventSauce\Console;
+declare(strict_types=1);
 
-use Chocofamily\LaravelEventSauce\Exceptions\MakeFileFailed;
+namespace Idunis\Context\Console;
+
+use Idunis\Context\Exceptions\MakeFileFailed;
 
 final class MakeConsumerCommand extends MakeCommand
 {

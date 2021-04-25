@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Idunis\EventSauce\Message;
+namespace Idunis\Context\MessageBus;
 
 use EventSauce\EventSourcing\Message;
 use EventSauce\EventSourcing\MessageDispatcher as EventSauceMessageDispatcher;
-use Idunis\EventSauce\Consumers\HandleConsumer;
+use Idunis\Context\Consumers\HandleConsumer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 final class MessageDispatcher implements EventSauceMessageDispatcher

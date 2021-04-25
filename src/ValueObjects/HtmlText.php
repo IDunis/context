@@ -6,7 +6,7 @@ namespace Idunis\Context\ValueObjects;
 
 use InvalidArgumentException;
 
-class PlainText extends BaseValueObject implements ValueObject
+class HtmlText extends BaseValueObject implements ValueObject
 {
     private int $length = 0;
 
@@ -28,6 +28,16 @@ class PlainText extends BaseValueObject implements ValueObject
     }
 
     /**
+     * Gets the html content as a string.
+     *
+     * @return string
+     */
+    public function toText(): string
+    {
+        return (string)$this->getValue();
+    }
+
+    /**
      * @param $value
      * @return self
      */
@@ -39,14 +49,14 @@ class PlainText extends BaseValueObject implements ValueObject
     protected function assertValueNotEmpty($value)
     {
         if (empty($value)) {
-            throw new InvalidArgumentException("Data must be not empty.", 422);
+            throw new InvalidArgumentException("Content must be not empty.", 422);
         }
     }
     
     protected function assertValueAllowLimit($value, $length)
     {
         if (strlen($value) > $length) {
-            throw new InvalidArgumentException("Data must be not greater than {$length}.", 422);
+            throw new InvalidArgumentException("Content must be not greater than {$length}.", 422);
         }
     }
 }

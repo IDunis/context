@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Idunis\EventSauce\AggregateRoots;
+namespace Idunis\Context\AggregateRoots;
 
 use EventSauce\EventSourcing\AggregateRoot;
 use EventSauce\EventSourcing\AggregateRootId;
@@ -14,8 +14,8 @@ use EventSauce\EventSourcing\Snapshotting\SnapshotRepository;
 use EventSauce\EventSourcing\Snapshotting\AggregateRootRepositoryWithSnapshotting;
 use EventSauce\EventSourcing\Snapshotting\AggregateRootWithSnapshotting;
 use EventSauce\EventSourcing\Snapshotting\ConstructingAggregateRootRepositoryWithSnapshotting;
-use Idunis\EventSauce\Message\EventMessageDispatcher;
-use Idunis\EventSauce\Message\MessageDispatcher;
+use Idunis\Context\MessageBus\EventMessageDispatcher;
+use Idunis\Context\MessageBus\MessageDispatcher;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
 use LogicException;

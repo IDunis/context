@@ -1,8 +1,10 @@
 <?php
 
-namespace Idunis\EventSauce\Console;
+declare(strict_types=1);
 
-use Idunis\EventSauce\Exceptions\MakeFileFailed;
+namespace Idunis\Context\Console;
+
+use Idunis\Context\Exceptions\MakeFileFailed;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;

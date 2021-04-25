@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Idunis\EventSauce;
+namespace Idunis\Context\Providers;
 
-use Idunis\EventSauce\ORM\Eloquent\Elasticsearch\Factory;
-use Idunis\EventSauce\ORM\Eloquent\Elasticsearch\Manager;
+use Idunis\Context\ORM\Eloquent\Elasticsearch\Factory;
+use Idunis\Context\ORM\Eloquent\Elasticsearch\Manager;
 use Illuminate\Support\ServiceProvider;
 
 class ElasticsearchServiceProvider extends ServiceProvider
@@ -41,7 +41,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
 
     protected function setUpConfig(): void
     {
-        $source = dirname(__DIR__) . '/config/elasticsearch.php';
+        $source = dirname(__DIR__) . '/../../config/elasticsearch.php';
 
         if ($this->app instanceof LaravelApplication) {
             $this->publishes([$source => config_path('elasticsearch.php')], 'config');

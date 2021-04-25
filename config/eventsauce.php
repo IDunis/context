@@ -37,7 +37,7 @@ return [
      * You may change this to any class that implements
      * \EventSauce\EventSourcing\MessageRepository
      */
-    'message_repository' => \Idunis\EventSauce\MessageRepository\MemoryMessageRepository::class,
+    'message_repository' => \Idunis\Context\MessageRepository\MemoryMessageRepository::class,
 
     /*
      * This class will be used to store snapshots.
@@ -45,6 +45,6 @@ return [
      * You may change this to any class that implements
      * EventSauce\EventSourcing\Snapshotting\SnapshotRepository
      */
-    'snapshot_repository' => \Idunis\EventSauce\MessageRepository\MemorySnapshotRepository::class,
+    'snapshot_repository' => \Idunis\Context\MessageRepository\MemorySnapshotRepository::class,
 
 ];

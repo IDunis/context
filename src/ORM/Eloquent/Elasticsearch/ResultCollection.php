@@ -1,6 +1,8 @@
 <?php
 
-namespace Idunis\EventSauce\ORM\Eloquent\Elasticsearch;
+declare(strict_types=1);
+
+namespace Idunis\Context\ORM\Eloquent\Elasticsearch;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -136,6 +138,19 @@ class ResultCollection extends Collection
     }
 
     /**
+     * Get items
+     *
+     * Get the raw elequent items from
+     * Elasticsearch results.
+     *
+     * @return array
+     */
+    public function items()
+    {
+        return $this->items;
+    }
+
+    /**
      * Paginate Collection
      *
      * @param int $pageLimit
@@ -146,6 +161,6 @@ class ResultCollection extends Collection
     {
         $page = Paginator::resolveCurrentPage() ?: 1;
        
-        return new Paginator($this->items, $this->hits, $this->totalHits(), $pageLimit, $page, ['path' => Paginator::resolveCurrentPath()]);
+        return new Paginator($this->items(), $this->getHits(), $this->totalHits(), $pageLimit, $page, ['path' => Paginator::resolveCurrentPath()]);
     }
 }

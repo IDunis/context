@@ -1,6 +1,8 @@
 <?php
 
-namespace Idunis\EventSauce\Support\Concerns;
+declare(strict_types=1);
+
+namespace Idunis\Context\Traits;
 
 trait JsonResponse
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use Idunis\EventSauce\AggregateRoots\AggregateRoot;
+use Idunis\Context\AggregateRoots\AggregateRoot;
 
 final class {{ aggregateRoot }} extends AggregateRoot
 {

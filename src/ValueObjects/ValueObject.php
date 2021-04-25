@@ -1,6 +1,8 @@
 <?php 
 
-namespace Idunis\EventSauce\ValueObjects;
+declare(strict_types=1);
+
+namespace Idunis\Context\ValueObjects;
 
 interface ValueObject
 {

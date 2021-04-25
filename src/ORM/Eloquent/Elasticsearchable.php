@@ -1,11 +1,13 @@
 <?php
 
-namespace Idunis\EventSauce\ORM\Eloquent;
+declare(strict_types=1);
+
+namespace Idunis\Context\ORM\Eloquent;
 
 use Exception;
-use Idunis\EventSauce\ORM\Eloquent\Elasticsearch\Collection;
-use Idunis\EventSauce\ORM\Eloquent\Elasticsearch\Connector;
-use Idunis\EventSauce\ORM\Eloquent\Elasticsearch\ResultCollection;
+use Idunis\Context\ORM\Eloquent\Elasticsearch\Collection;
+use Idunis\Context\ORM\Eloquent\Elasticsearch\Connector;
+use Idunis\Context\ORM\Eloquent\Elasticsearch\ResultCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use ReflectionMethod;
@@ -186,6 +188,8 @@ trait Elasticsearchable
      */
     public function getIndexDocumentData()
     {
+        return $this->toArray();
+
         $transformer = $this->documentTransformer ?? null;
 
         return class_exists($transformer) ? (new $transformer)->transform($this) : $this->toArray();
@@ -768,7 +772,7 @@ trait Elasticsearchable
      */
     public function newElasticsearchResultCollection(array $models = [], $meta = null)
     {
-        return new ElasticsearchResultCollection($models, $meta);
+        return new ResultCollection($models, $meta);
     }
 
     /**

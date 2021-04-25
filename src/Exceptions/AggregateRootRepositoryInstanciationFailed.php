@@ -1,6 +1,8 @@
 <?php
 
-namespace Idunis\EventSauce\Exceptions;
+declare(strict_types=1);
+
+namespace Idunis\Context\Exceptions;
 
 use Exception;
 

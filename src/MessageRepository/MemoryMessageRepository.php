@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Idunis\EventSauce\MessageRepository;
+namespace Idunis\Context\MessageRepository;
 
 use EventSauce\EventSourcing\AggregateRootId;
 use EventSauce\EventSourcing\Header;

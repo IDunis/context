@@ -1,6 +1,8 @@
 <?php
 
-namespace Idunis\EventSauce\ORM\Eloquent\Elasticsearch;
+declare(strict_types=1);
+
+namespace Idunis\Context\ORM\Eloquent\Elasticsearch;
 
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;

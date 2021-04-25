@@ -1,14 +1,27 @@
 <?php
 
-namespace Idunis\EventSauce\Support\Concerns;
+declare(strict_types=1);
 
+namespace Idunis\Context\Traits;
+
+use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Validator;
 
-trait InputValidator
+trait BusExecutor
 {
-
+    /**
+     * Dispatch a command to its appropriate handler in the current process.
+     *
+     * @param  mixed  $job
+     * @param  mixed  $handler
+     * @return mixed
+     */
+    public function execute($job, $handler = null)
+    {
+        return app(Dispatcher::class)->dispatchNow($job, $handler);
+    }
 
     /**
      * Validate the given request with the given rules.

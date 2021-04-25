@@ -6,9 +6,9 @@ namespace Idunis\Context\ValueObjects;
 
 use InvalidArgumentException;
 
-class PlainText extends BaseValueObject implements ValueObject
+class CodeText extends BaseValueObject implements ValueObject
 {
-    private int $length = 0;
+    protected int $length = 0;
 
     private function __construct($value, $length)
     {
@@ -39,14 +39,14 @@ class PlainText extends BaseValueObject implements ValueObject
     protected function assertValueNotEmpty($value)
     {
         if (empty($value)) {
-            throw new InvalidArgumentException("Data must be not empty.", 422);
+            throw new InvalidArgumentException("Code must be not empty.", 422);
         }
     }
     
     protected function assertValueAllowLimit($value, $length)
     {
         if (strlen($value) > $length) {
-            throw new InvalidArgumentException("Data must be not greater than {$length}.", 422);
+            throw new InvalidArgumentException("Code must be not greater than {$length}.", 422);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Idunis\EventSauce\Consumers;
+namespace Idunis\Context\Consumers;
 
 use EventSauce\EventSourcing\Consumer as EventSauceConsumer;
 use EventSauce\EventSourcing\Message;

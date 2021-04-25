@@ -1,8 +1,10 @@
 <?php
 
-namespace Idunis\EventSauce\ORM\Eloquent\Elasticsearch;
+declare(strict_types=1);
 
-use Idunis\EventSauce\ORM\Eloquent\Elasticsearch\Manager;
+namespace Idunis\Context\ORM\Eloquent\Elasticsearch;
+
+use Idunis\Context\ORM\Eloquent\Elasticsearch\Manager;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 trait Connector

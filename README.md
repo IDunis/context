@@ -1,1 +1,1 @@
-# idunis-eventsauce
+# Bounded contexts supplier

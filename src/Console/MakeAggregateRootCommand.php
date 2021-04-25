@@ -1,9 +1,11 @@
 <?php
 
-namespace Idunis\EventSauce\Console;
+declare(strict_types=1);
+
+namespace Idunis\Context\Console;
 
 use DateTimeImmutable;
-use Idunis\EventSauce\Exceptions\MakeFileFailed;
+use Idunis\Context\Exceptions\MakeFileFailed;
 use Illuminate\Support\Str;
 
 final class MakeAggregateRootCommand extends MakeCommand

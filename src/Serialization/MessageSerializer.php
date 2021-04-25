@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Idunis\EventSauce\Serialization;
+namespace Idunis\Context\Serialization;
 
 use EventSauce\EventSourcing\Message;
 use Generator;

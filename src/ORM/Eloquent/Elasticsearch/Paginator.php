@@ -1,6 +1,8 @@
 <?php
 
-namespace Idunis\EventSauce\ORM\Eloquent\Elasticsearch;
+declare(strict_types=1);
+
+namespace Idunis\Context\ORM\Eloquent\Elasticsearch;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;

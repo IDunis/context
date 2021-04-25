@@ -1,14 +1,15 @@
 {
-    "name": "dinhtrongnam/idunis-eventsauce",
-    "description": "The easiest way to get started with domain es cqrs",
+    "name": "idunis/context",
+    "description": "The easiest way to get started with bounded context",
     "keywords": [
         "dinhtrongnam",
-        "idunis-eventsauce",
-        "event",
-        "sourcing",
-        "aggregates"
+        "idunis",
+        "context",
+        "event sourcing",
+        "cqrs",
+        "aggregate"
     ],
-    "homepage": "https://github.com/dinhtrongnam/idunis-eventsauce.git",
+    "homepage": "https://github.com/idunis/context.git",
     "license": "None",
     "support": {
         "issues": "https://github.com/EventSaucePHP/LaravelEventSauce/issues",
@@ -24,7 +25,6 @@
     "require": {
         "php": "^8.0|^7.4",
         "ext-json": "*",
-        "cviebrock/laravel-elasticsearch": "^8.0",
         "elasticsearch/elasticsearch": "^7.12",
         "eventsauce/eventsauce": "^0.8.2",
         "illuminate/bus": "^8.0",
@@ -39,7 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Idunis\\EventSauce\\": "src/"
+            "Idunis\\Context\\": "src/"
         }
     },
     "autoload-dev": {
@@ -50,7 +50,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Idunis\\EventSauce\\EventSauceServiceProvider"
+                "Idunis\\Context\\Providers\\ElasticsearchServiceProvider",
+                "Idunis\\Context\\Providers\\EventSauceServiceProvider"
             ]
         }
     },

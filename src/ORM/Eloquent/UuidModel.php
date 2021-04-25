@@ -1,8 +1,10 @@
 <?php
 
-namespace Idunis\EventSauce\ORM\Eloquent;
+declare(strict_types=1);
 
-use Idunis\EventSauce\AggregateRoots\AggregateRootId;
+namespace Idunis\Context\ORM\Eloquent;
+
+use Idunis\Context\AggregateRoots\AggregateRootId;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -24,6 +26,11 @@ trait UuidModel
                 $model->uuid = AggregateRootId::create()->toString();
             }
         });
+    }
+
+    public function getUuid()
+    {
+        return $this->uuid;
     }
     
     /**
@@ -70,15 +77,15 @@ trait UuidModel
         }
     
         $search = $query->where(function ($query) use ($id_or_uuid) {
-            $query->where('id', $id_or_uuid)
+            $query->where('id', is_numeric($id_or_uuid) ? $id_or_uuid : null)
                 ->orWhere('uuid', $id_or_uuid);
         });
     
         return $first ? $search->firstOrFail() : $search;
     }
 
-    public static function find($uuid): ?Model
+    public static function find($id_or_uuid): ?Model
     {
-        return static::where('id', $uuid)->orWhere('uuid', $uuid)->first();
+        return static::where('id', is_numeric($id_or_uuid) ? $id_or_uuid : null)->orWhere('uuid', $id_or_uuid)->first();
     }
 }
