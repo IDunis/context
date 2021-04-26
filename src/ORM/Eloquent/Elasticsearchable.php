@@ -298,7 +298,30 @@ trait Elasticsearchable
 
         $params = $instance->getBasicEsParams();
 
-        $params['body']['query']['match']['_all'] = $term;
+        // $params['body']['query']['match']['_all'] = $term;
+        $params['body']['query']['match']['_id'] = $term;
+
+        $result = $instance->getElasticsearchClient()->search($params);
+
+        return static::hydrateElasticsearchResult($result);
+    }
+
+    /**
+     * Search
+     *
+     * Simple search using a match _all query
+     *
+     * @param string $term
+     *
+     * @return ResultCollection
+     */
+    public static function searchAll()
+    {
+        $instance = new static;
+
+        $params = $instance->getBasicEsParams();
+
+        $params['body']['query']['match_all'] = new \stdClass();
 
         $result = $instance->getElasticsearchClient()->search($params);
 
