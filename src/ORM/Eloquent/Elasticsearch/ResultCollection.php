@@ -68,7 +68,7 @@ class ResultCollection extends Collection
      */
     public function totalHits()
     {
-        return $this->hits['total'];
+        return $this->hits['total']['value'];
     }
 
     /**
@@ -160,7 +160,7 @@ class ResultCollection extends Collection
     public function paginate($pageLimit = 25)
     {
         $page = Paginator::resolveCurrentPage() ?: 1;
-       
+        
         return new Paginator($this->items(), $this->getHits(), $this->totalHits(), $pageLimit, $page, ['path' => Paginator::resolveCurrentPath()]);
     }
 }

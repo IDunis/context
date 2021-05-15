@@ -31,7 +31,7 @@ trait JsonResponse
     {
         return response()->json([
             'status' => $httpStatus,
-            'data' => $data['data'] ?? $data ?? []
+            'data' => $data ?? []
         ], $httpStatus);
     }
 

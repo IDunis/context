@@ -13,10 +13,10 @@ abstract class Consumer implements EventSauceConsumer
     {
         $event = $message->event();
         $parts = explode('\\', get_class($event));
-        $method = 'handle'.end($parts);
+        $method = 'on'.end($parts);
 
         if (method_exists($this, $method)) {
-            $this->{$method}($event, $message);
+            $this->{$method}($event, $message->aggregateRootId());
         }
     }
 }

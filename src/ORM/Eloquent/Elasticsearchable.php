@@ -600,17 +600,39 @@ trait Elasticsearchable
     }
 
     /**
+     * Index Exists.
+     *
+     * Does this index exist?
+     *
+     * @param Client $client
+     * @return bool
+     */
+    public static function indexExists($client = null)
+    {
+        $instance = new static;
+
+        $client = $client ?: $instance->getElasticsearchClient();
+
+        $index = array(
+            'index' => $instance->getIndexName(),
+        );
+
+        return !!$client->indices()->exists($index);
+    }
+
+    /**
      * Type Exists.
      *
      * Does this type exist?
      *
+     * @param Client $client
      * @return bool
      */
-    public static function typeExists()
+    public static function typeExists($client = null)
     {
         $instance = new static;
 
-        $params = $instance->getBasicEsParams();
+        $params = $client ?: $instance->getBasicEsParams();
 
         return $instance->getElasticsearchClient()->indices()->existsType($params);
     }
